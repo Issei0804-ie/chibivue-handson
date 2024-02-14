@@ -1,5 +1,5 @@
-import { Component } from "./component";
-import { RootRenderFunction } from "./renderer";
+import { Component } from './component'
+import { RootRenderFunction } from './renderer'
 
 export interface App<HostElement = any> {
     mount(rootContainer: HostElement | string): void
@@ -15,8 +15,9 @@ export function createAppAPI<HostElement>(
     return function createApp(rootComponent) {
         const app: App = {
             mount(rootContainer: HostElement) {
-                const message = rootComponent.render!()
-                render(message, rootContainer)
+                const vnode = rootComponent.render!();
+                console.log(vnode); // ログを見てみる
+                render(vnode, rootContainer)
             },
         }
 
